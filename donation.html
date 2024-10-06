@@ -1,0 +1,25 @@
+<div class="donation-container">
+  <div class="donation-header">
+    <h2 id="fundraiser-caption">Donate to Fundraiser</h2>
+    <p id="fundraiser-organizer">Organizer: Organizer Name</p>
+  </div>
+
+  <form id="donation-form" class="donation-form">
+    <div class="form-group">
+      <label for="giver">Your Name</label>
+      <input type="text" id="giver" required>
+    </div>
+
+    <div class="form-group">
+      <label for="amount">Donation Amount (AUD)</label>
+      <input type="number" id="amount" required min="5">
+      <small>Minimum donation: 5 AUD</small>
+    </div>
+
+    <button type="submit" class="donate-button">Submit Donation</button>
+  </form>
+</div>
+
+<script src="donation.js"></script>
+
+<p>donation works!</p>
