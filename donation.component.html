@@ -1,0 +1,30 @@
+<div class="donation-container">
+
+  <!-- Donation Header -->
+  <div class="donation-header">
+    <h2>Donate to {{ fundraiser.CAPTION }}</h2>
+    <p>Organizer: {{ fundraiser.ORGANIZER }}</p>
+  </div>
+
+  <!-- Donation Form -->
+  <form (ngSubmit)="submitDonation()" class="donation-form">
+
+    <!-- Donor's Name -->
+    <div class="form-group">
+      <label for="giver">Your Name</label>
+      <input type="text" id="giver" [(ngModel)]="giver" name="giver" required class="form-control">
+    </div>
+
+    <!-- Donation Amount -->
+    <div class="form-group">
+      <label for="amount">Donation Amount (AUD)</label>
+      <input type="number" id="amount" [(ngModel)]="amount" name="amount" required min="5" class="form-control">
+      <small class="form-text">Minimum donation: 5 AUD</small>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="donate-button">Submit Donation</button>
+  </form>
+
+<p>donation works!</p>
+</div>

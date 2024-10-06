@@ -1,0 +1,47 @@
+<div class="fundraiser-container">
+  
+  <!-- Error Handling -->
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <!-- Fundraiser Details Section -->
+  <div class="fundraiser-details" *ngIf="fundraiser">
+    <img [src]="fundraiser.image" alt="{{ fundraiser.CAPTION }}" class="fundraiser-image">
+    <h2>{{ fundraiser.CAPTION }}</h2>
+    <p>Organizer: {{ fundraiser.ORGANIZER }}</p>
+    <p>{{ fundraiser.description }}</p>
+  </div>
+
+  <!-- Progress Bar Section -->
+  <div class="fundraiser-progress" *ngIf="fundraiser.CURRENT_FUNDING && fundraiser.TARGET_FUNDING">
+    <h3>{{ fundraiser.CURRENT_FUNDING | currency }} raised of {{ fundraiser.TARGET_FUNDING | currency }} goal</h3>
+    <div class="progress-bar">
+      <div class="progress" [style.width]="getProgressPercentage() + '%'"></div>
+    </div>
+    <p>{{ donations.length }} donations</p>
+  </div>
+
+  <!-- Donation Button -->
+  <button (click)="redirectToDonation()" class="donate-button" *ngIf="fundraiser">Donate Now</button>
+
+  <!-- Recent Donations Section -->
+  <div class="recent-donations" *ngIf="donations.length > 0">
+    <h4>Recent Donations</h4>
+    <ul>
+      <li *ngFor="let donation of donations">
+        {{ donation.GIVER }} donated {{ donation.AMOUNT | currency }} on {{ donation.DATE }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- Updates Section -->
+  <div class="fundraiser-updates" *ngIf="fundraiser.updates && fundraiser.updates.length > 0">
+    <h4>Updates</h4>
+    <div *ngFor="let update of fundraiser.updates">
+      <p>{{ update.date }} by {{ update.author }}</p>
+      <p>{{ update.text }}</p>
+    </div>
+  </div>
+  
+</div>
